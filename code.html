@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beauty Haven Salon - Your Ultimate Beauty Destination</title>
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff69b4, #ffd700);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ff1493;
+        }
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: white;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section (Creative Salon Ad) */
+        .hero {
+            background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+            color: white;
+            text-align: center;
+            padding: 150px 0 100px; /* Adjusted for fixed header */
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            animation: sparkle 2s infinite;
+        }
+        @keyframes sparkle {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.2s both;
+        }
+        .cta-button {
+            background: #ffd700;
+            color: #333;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: white;
+            text-align: center;
+        }
+        .about h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff69b4;
+        }
+        .about p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #f9f9f9;
+        }
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #ff69b4;
+        }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+        }
+        .service-card h3 {
+            color: #ff69b4;
+            margin-bottom: 1rem;
+        }
+
+        /* Location Section with Google Maps */
+        .location {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, white, #fff5f5); /* Soft pink gradient for attractiveness */
+        }
+        .location h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #ff69b4;
+            position: relative;
+        }
+        .location h2::after {
+            content: 'Find Your Way to Beauty'; /* Promotional subtitle */
+            display: block;
+            font-size: 1.2rem;
+            color: #ffd700;
+            font-style: italic;
+            margin-top: 0.5rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+        .location-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        .location-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Base shadow for depth */
+            transition: all 0.3s ease; /* Smooth transitions for transforms */
+            animation: fadeInUp 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+        .location-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, #ff69b4, #ffd700); /* Top accent bar */
+        }
+        .location-card:hover {
+            transform: translateY(-10px) scale(1.02) rotateY(1deg); /* Lift, scale, and subtle 3D rotate */
+            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3); /* Enhanced pink-tinted shadow */
+        }
+        .location-text {
+            /* This is now inside .location-card for the info box */
+        }
+        .location-text h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff69b4;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .location-text p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .directions-btn {
+            background: linear-gradient(135deg, #ff69b4, #ffd700);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 1rem auto 0;
+            text-decoration: none;
+            text-align: center;
+            width: fit-content;
+        }
+        .directions-btn:hover {
+            transform: scale(1.1); /* Button-specific transform */
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+        }
+        .map-container {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1); /* Matching shadow */
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        .map-container:hover {
+            transform: translateY(-5px) scale(1.01); /* Subtle lift and scale for map */
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            border: 2px solid #ff69b4; /* Glow border on hover */
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: linear-gradient(135deg, #ff69b4, #ffd700);
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .hamburger {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .location-info {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero {
+                padding: 120px 0 60px; /* Adjust for mobile header */
+            }
+        }
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 10px;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Beauty Haven Salon</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#location">Location</a></li>
+            </ul>
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section (Creative Ad) -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1>Welcome to Beauty Haven</h1>
+            <p>Transform your look with our expert stylists. 20% Off Your First Visit! Book Now for Radiant Beauty.</p>
+            <a href="#services" class="cta-button" onclick="smoothScroll(event)">Book Appointment</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>Beauty Haven Salon is your premier destination for luxurious hair, nail, and skincare services. With over 10 years of experience, our team of certified professionals uses premium products to bring out your natural beauty. We believe in personalized care that makes you feel confident and fabulous.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Hair Styling</h3>
+                    <p>Cuts, colors, and treatments tailored to you.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Nail Care</h3>
+                    <p>Manicures, pedicures, and nail art for perfect hands and feet.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Skin Treatments</h3>
+                    <p>Facial therapies and massages for glowing skin.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Makeup Services</h3>
+                    <p>Professional makeup for events and daily glamour.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <section id="location" class="location">
+        <div class="container">
+            <h2>Visit Us</h2>
+            <div class="location-info">
+                <div class="location-card">
+                    <div class="location-text">
+                        <h3>Beauty Haven Salon</h3>
+                        <p><strong>📍 Address:</strong> 123 Beauty Avenue, New York, NY 10001</p>
+                        <p><strong>📞 Phone:</strong> (555) 123-4567</p>
+                        <p><strong>✉️ Email:</strong> info@beautyhaven.com</p>
+                        <p><strong>🕒 Hours:</strong> Mon-Sat: 9AM-7PM | Sun: 10AM-5PM</p>
+                        <a href="#" class="directions-btn" onclick="getDirections(event)">Get Directions</a>
+                    </div>
+                </div>
+                <div class="map-container">
+                    <!-- Google Maps Embed (Replace with your actual embed URL from Google Maps) -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15135.443941636959!2d73.80997564224505!3d18.48995502171965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfe79bf771d7%3A0xac81e25be4cc4bf!2sKarvenagar%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1760130916489!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Beauty Haven Salon. All rights reserved. | Designed with ❤️ for beauty lovers.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth Scroll for Navigation
+        function smoothScroll(event) {
+            event.preventDefault();
+            const targetId = event.target.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Add smooth scroll to all nav links
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', smoothScroll);
+        });
+    </script>
+</body>
+</html>
