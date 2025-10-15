@@ -23,16 +23,16 @@
             padding: 0 20px;
         }
 
-        /* Header */
+        /* Header - Modified to Jawed Habib Style (Red/White) */
         header {
-            background: linear-gradient(135deg, #ff69b4, #ffd700);
+            background: #d61a20; /* Primary Red Color */
             color: white;
             padding: 1rem 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         nav {
             display: flex;
@@ -42,6 +42,15 @@
         .logo {
             font-size: 1.5rem;
             font-weight: bold;
+            display: flex; /* To align logo and text */
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .logo img {
+            height: 69px; /* Adjust size as needed */
+            width: auto;
+            /* Invert the image color if needed for white background on red header */
+            filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
         }
         .nav-links {
             display: flex;
@@ -54,8 +63,25 @@
             transition: color 0.3s;
         }
         .nav-links a:hover {
-            color: #ff1493;
+            color: #ffd700; /* Gold accent on hover */
         }
+        
+        /* New Style for the Booking link in the Navbar */
+        .nav-links .booking-link a {
+            background-color: #ffd700; /* Gold background */
+            color: #d61a20; /* Red text */
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        .nav-links .booking-link a:hover {
+            background-color: #ffc700; /* Darker gold on hover */
+            color: #333;
+            transform: scale(1.05);
+        }
+
+
         .hamburger {
             display: none;
             flex-direction: column;
@@ -71,7 +97,7 @@
 
         /* Hero Section (Creative Salon Ad) */
         .hero {
-            background: linear-gradient(135deg, #ff69b4, #ffb6c1);
+            background: linear-gradient(135deg, #d61a20, #ff69b4); /* Blend the red and pink */
             color: white;
             text-align: center;
             padding: 150px 0 100px; /* Adjusted for fixed header */
@@ -102,7 +128,10 @@
             margin-bottom: 2rem;
             animation: fadeInUp 1s ease-out 0.2s both;
         }
+        /* Removed .cta-button styles as it's no longer in the hero, 
+           but leaving the rest for general use if needed elsewhere. */
         .cta-button {
+            /* Kept for existing directions button, but not used in hero anymore */
             background: #ffd700;
             color: #333;
             padding: 1rem 2rem;
@@ -132,7 +161,7 @@
         .about h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: #ff69b4;
+            color: #d61a20; /* Changed to red accent */
         }
         .about p {
             font-size: 1.1rem;
@@ -149,7 +178,7 @@
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
-            color: #ff69b4;
+            color: #d61a20; /* Changed to red accent */
         }
         .services-grid {
             display: grid;
@@ -168,20 +197,20 @@
             transform: translateY(-10px);
         }
         .service-card h3 {
-            color: #ff69b4;
+            color: #d61a20; /* Changed to red accent */
             margin-bottom: 1rem;
         }
 
         /* Location Section with Google Maps */
         .location {
             padding: 80px 0;
-            background: linear-gradient(to bottom, white, #fff5f5); /* Soft pink gradient for attractiveness */
+            background: linear-gradient(to bottom, white, #fff0f0); /* Soft red gradient for attractiveness */
         }
         .location h2 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: #ff69b4;
+            color: #d61a20; /* Changed to red accent */
             position: relative;
         }
         .location h2::after {
@@ -218,19 +247,16 @@
             left: 0;
             right: 0;
             height: 4px;
-            background: linear-gradient(135deg, #ff69b4, #ffd700); /* Top accent bar */
+            background: linear-gradient(135deg, #d61a20, #ffd700); /* Top accent bar (Red/Gold) */
         }
         .location-card:hover {
             transform: translateY(-10px) scale(1.02) rotateY(1deg); /* Lift, scale, and subtle 3D rotate */
-            box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3); /* Enhanced pink-tinted shadow */
-        }
-        .location-text {
-            /* This is now inside .location-card for the info box */
+            box-shadow: 0 15px 40px rgba(214, 26, 32, 0.3); /* Enhanced red-tinted shadow */
         }
         .location-text h3 {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: #ff69b4;
+            color: #d61a20; /* Changed to red accent */
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -243,7 +269,7 @@
             gap: 0.5rem;
         }
         .directions-btn {
-            background: linear-gradient(135deg, #ff69b4, #ffd700);
+            background: linear-gradient(135deg, #d61a20, #ffd700); /* Red/Gold gradient */
             color: white;
             padding: 0.8rem 1.5rem;
             border: none;
@@ -259,7 +285,7 @@
         }
         .directions-btn:hover {
             transform: scale(1.1); /* Button-specific transform */
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.4);
+            box-shadow: 0 5px 15px rgba(214, 26, 32, 0.4);
         }
         .map-container {
             height: 300px;
@@ -272,7 +298,7 @@
         .map-container:hover {
             transform: translateY(-5px) scale(1.01); /* Subtle lift and scale for map */
             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-            border: 2px solid #ff69b4; /* Glow border on hover */
+            border: 2px solid #d61a20; /* Glow border on hover (Red) */
         }
         .map-container iframe {
             width: 100%;
@@ -297,7 +323,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: linear-gradient(135deg, #ff69b4, #ffd700);
+                background: #d61a20; /* Solid Red for mobile menu */
                 flex-direction: column;
                 padding: 1rem;
                 gap: 1rem;
@@ -305,6 +331,13 @@
             .nav-links.active {
                 display: flex;
             }
+            /* Adjust the booking link for mobile menu */
+            .nav-links .booking-link a {
+                padding: 0.8rem 1rem;
+                display: block; /* Make it take the full width of the menu item */
+                text-align: center;
+            }
+            
             .hamburger {
                 display: flex;
             }
@@ -334,18 +367,23 @@
             }
         }
 
-        
+
     </style>
 </head>
 <body>
     <header>
         <nav class="container">
-            <div class="logo">Beauty Haven Salon</div>
+            <div class="logo">
+                <img src="./Corporate-Logo.webp" alt="Habib Logo">
+                </div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
                 <li><a href="#services">Services</a></li>
                 <li><a href="#location">Location</a></li>
+                <li class="booking-link">
+                    <a href="https://docs.google.com/forms/d/e/1FAIpQLSctKZn3rfhETPF5rzxKU8wvAiMAwRnunC9ueZDMWv09E03ksQ/viewform" target="_blank">Book Now 📅</a>
+                </li>
             </ul>
             <div class="hamburger" onclick="toggleMenu()">
                 <span></span>
@@ -355,16 +393,13 @@
         </nav>
     </header>
 
-    <!-- Hero Section (Creative Ad) -->
     <section id="home" class="hero">
         <div class="container">
-            <h1>Welcome to Beauty Haven</h1>
-            <p>Transform your look with our expert stylists. 20% Off Your First Visit! Book Now for Radiant Beauty.</p>
-            <a href="#services" class="cta-button" onclick="smoothScroll(event)">Book Appointment</a>
+            <h1>Welcome to Habib</h1>
+            <p>Transform your look with our expert stylists. 20% Off Your First Visit! Find the **'Book Now'** link in the navigation bar above.</p>
         </div>
     </section>
 
-    <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
             <h2>About Us</h2>
@@ -372,7 +407,6 @@
         </div>
     </section>
 
-    <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
             <h2>Our Services</h2>
@@ -397,7 +431,6 @@
         </div>
     </section>
 
-    
 
     <section id="location" class="location">
         <div class="container">
@@ -406,16 +439,15 @@
                 <div class="location-card">
                     <div class="location-text">
                         <h3>Beauty Haven Salon</h3>
-                        <p><strong>📍 Address:</strong> 123 Beauty Avenue, New York, NY 10001</p>
-                        <p><strong>📞 Phone:</strong> (555) 123-4567</p>
-                        <p><strong>✉️ Email:</strong> info@beautyhaven.com</p>
-                        <p><strong>🕒 Hours:</strong> Mon-Sat: 9AM-7PM | Sun: 10AM-5PM</p>
-                        <a href="#" class="directions-btn" onclick="getDirections(event)">Get Directions</a>
+                        <p><strong>📍 Address:</strong> Jawahar Nagar Milk dairy road near sukhkarta Bhojnalay Shatshri Nagar Akola, 444001</p>
+                        <p><strong>📞 Phone:</strong>  Amol 9834205334 , Abhishek 9370941499</p>
+                        <p><strong>✉️ Email:</strong>  habbibhairandbeauty@gmail.com </p>
+                        <p><strong>🕒 Hours:</strong> Mon to sun 9.00Am to 10Pm</p>
+                        <a href="https://maps.google.com/?q=Jawahar+Nagar+Milk+dairy+road+near+sukhkarta+Bhojnalay+Shatshri+Nagar+Akola,+444001" target="_blank" class="directions-btn">Get Directions</a>
                     </div>
                 </div>
                 <div class="map-container">
-                    <!-- Google Maps Embed (Replace with your actual embed URL from Google Maps) -->
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15135.443941636959!2d73.80997564224505!3d18.48995502171965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2bfe79bf771d7%3A0xac81e25be4cc4bf!2sKarvenagar%2C%20Pune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1760130916489!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <iframe src="https://maps.google.com/maps?q=Jawahar%20Nagar%20Milk%20dairy%20road%20near%20sukhkarta%20Bhojnalay%20Shatshri%20Nagar%20Akola%2C%20444001&t=&z=14&ie=UTF8&iwloc=&output=embed" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -423,7 +455,7 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2023 Beauty Haven Salon. All rights reserved. | Designed with ❤️ for beauty lovers.</p>
+            <p>© 2025 Beauty Haven Salon. All rights reserved. | Designed with ❤️ for beauty lovers.</p>
         </div>
     </footer>
 
@@ -434,17 +466,25 @@
             navLinks.classList.toggle('active');
         }
 
-        // Smooth Scroll for Navigation
+        // Smooth Scroll for Navigation (Kept for internal links)
         function smoothScroll(event) {
-            event.preventDefault();
-            const targetId = event.target.getAttribute('href').substring(1);
-            const targetSection = document.getElementById(targetId);
-            targetSection.scrollIntoView({ behavior: 'smooth' });
+            // Check if the link is NOT the external Google Form link
+            if (!event.target.closest('.booking-link')) {
+                 event.preventDefault();
+                 const targetId = event.target.getAttribute('href').substring(1);
+                 const targetSection = document.getElementById(targetId);
+                 if(targetSection) {
+                      targetSection.scrollIntoView({ behavior: 'smooth' });
+                 }
+            }
         }
 
-        // Add smooth scroll to all nav links
+        // Add smooth scroll to all internal nav links
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', smoothScroll);
+            // Only apply smooth scroll to internal links starting with '#'
+            if (link.getAttribute('href').startsWith('#')) {
+                link.addEventListener('click', smoothScroll);
+            }
         });
     </script>
 </body>
